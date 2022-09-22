@@ -1,0 +1,37 @@
+cd inventario-vacunacion
+  yarn
+  yarn dev
+
+Start JSON Server
+on root project:
+cd db
+json-server --watch db.json
+
+
+
+
+Get users with roles
+http://localhost:3000/roles?_embed=users
+Filter by role:
+http://localhost:3000/roles?_embed=users&id=1
+
+
+With role admin:
+GET,POST,PUT,DELETE: employes
+
+Generating alta:
+POST users AND PATCH(background) userId on employes, 
+
+With role employed:
+PUT GET employed
+
+
+filtering by vaccineState:
+http://localhost:3000/employesVaccines?_expand=employes&isVaccinated=true
+
+filtering by type vaccine:
+http://localhost:3000/employesVaccines?_expand=employes&typeVaccineId=1
+
+filtering by ranges on vaccinated ranges:
+// timestamp
+http://localhost:3000/employesVaccines?_expand=employes&vaccineDate_gte=50&vaccineDate_lte=100
