@@ -29,7 +29,7 @@
       "password": null
     }
   ],
-  "employes":[
+  "employes": [
     {
         "id":1,
         "userId": 2,
@@ -51,8 +51,51 @@
         "birthDate": null,
         "address": "Street 1234",
         "cellphone": "0996008910"
+    },
+    {
+        "id":3,
+        "userId": null,
+        "cedula": "0912345608",
+        "names": "Genesis Lisbeth",
+        "lastnames" :"Cunalata Amaguaya",
+        "email": "genesis@mail.com",
+        "birthDate": null,
+        "address": "Street 1234",
+        "cellphone": "0996008910"
+    },
+    {
+        "id":4,
+        "userId": null,
+        "cedula": "0912345608",
+        "names": "Genesis Lisbeth I",
+        "lastnames" :"Cunalata Amaguaya",
+        "email": "genesis@mail.com",
+        "birthDate": null,
+        "address": "Street 1234",
+        "cellphone": "0996008910"
+    },
+    {
+        "id":5,
+        "userId": null,
+        "cedula": "0912345608",
+        "names": "Genesis Lisbeth II",
+        "lastnames" :"Cunalata Amaguaya",
+        "email": "genesis@mail.com",
+        "birthDate": null,
+        "address": "Street 1234",
+        "cellphone": "0996008910"
+    },
+    {
+        "id":6,
+        "userId": null,
+        "cedula": "0912345608",
+        "names": "Genesis Lisbeth iv",
+        "lastnames" :"Cunalata Amaguaya",
+        "email": "genesis@mail.com",
+        "birthDate": null,
+        "address": "Street 1234",
+        "cellphone": "0996008910"
     }
-    
   ],
   "typeVaccines": [
     {

@@ -1,8 +1,11 @@
 import { Grid, Typography } from "@mui/material"
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { apiInstance } from "./settings/apiInstance"
+import { getAllEmployes } from "./store/actions/employes"
+import { useStore, useStoreDispatch } from "./store/store"
 import Navbar from "./ui/Navbar"
 import { EmployeesList } from "./vacunacion/components/EmployesList"
+
 const user = {
     id: 1,
     roleId: 1,
@@ -11,11 +14,11 @@ const user = {
 }
 
 function App() {
-    const [employees, setEmployees] = useState([])
+    const { employesDispatch } = useStoreDispatch();
     useEffect(() => {
         apiInstance.get("/employes")
         .then(({ data }) =>{
-            setEmployees(data)
+            employesDispatch(getAllEmployes(data))
         })
     }, [])
     
@@ -27,7 +30,7 @@ function App() {
                     Inventario - Vacunación
                 </Typography>
             </Grid>
-            <EmployeesList employees={employees}/>
+            <EmployeesList/>
         </Grid>
     </Navbar>
   )

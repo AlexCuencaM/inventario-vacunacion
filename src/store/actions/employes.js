@@ -1,6 +1,10 @@
 import { employesType } from "./types";
 
-export const employedDeleted = (employed) => ({
+export const employedDeleted = (id) => ({
     type: employesType.delete,
-    payload: employed
+    payload: id
 });
+export const getAllEmployes = (employes) => ({
+    type: employesType.selectAll,
+    payload: employes
+})

@@ -6,9 +6,11 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ConfirmDialog } from '../../ui/ConfirmDialog';
 import { apiInstance } from '../../settings/apiInstance';
-
+import { useStoreDispatch } from '../../store/store';
+import { employedDeleted } from "../../store/actions/employes"
 export default function EmployedCard(props) {
-    const { employed } = props
+  const { employed } = props
+  const { employesDispatch } = useStoreDispatch();
   const [deleteModal, setDeleteModal] = React.useState(false)
   const onClose = (value) =>{
     
@@ -16,10 +18,9 @@ export default function EmployedCard(props) {
         apiInstance.delete(`/employes/${employed.id}`)
         .then((res) => {
             setDeleteModal(false)
+            employesDispatch(employedDeleted())
         })
-        // .catch((res) => {
-        //     console.log(res)
-        // })
+    else setDeleteModal(false)
   }
   const handleClick = () =>{
     setDeleteModal(true)  
