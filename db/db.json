@@ -1,90 +1,76 @@
 {
+  "roles": [
+    {
+      "id": 1,
+      "description": "Admin"
+    },
+    {
+      "id": 2,
+      "description": "Employed"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "roleId": 1,
+      "username": "Ales",
+      "password": null
+    },
+    {
+      "id": 2,
+      "roleId": 2,
+      "username": "Max",
+      "password": null
+    },
+    {
+      "id": 3,
+      "roleId": 2,
+      "username": "Gene",
+      "password": null
+    }
+  ],
+  "employes":[
+    {
+        "id":1,
+        "userId": 2,
+        "cedula": "0912345678",
+        "names": "Maximiliano Dante",
+        "lastnames" :"Cuenca Morán",
+        "email": "max@mail.com",
+        "birthDate": null,
+        "address": "Street 123",
+        "cellphone": "0996008960"
+    },
+    {
+        "id":2,
+        "userId": 3,
+        "cedula": "0912345608",
+        "names": "Genesis Lisbeth",
+        "lastnames" :"Cunalata Amaguaya",
+        "email": "genesis@mail.com",
+        "birthDate": null,
+        "address": "Street 1234",
+        "cellphone": "0996008910"
+    }
     
-    "roles":[
-        {
-            "id":1,
-            "description": "Admin"
-        },
-
-        {
-            "id":2,
-            "description": "Employed"
-        }
-    ],
-    "users":[
-        {
-            "id": 1,
-            "roleId": 1,
-            "username": "Ales",
-            "password": null
-        },
-        {
-            "id": 2,
-            "roleId": 2,
-            "username": "Max",
-            "password": null
-        },
-        {
-            "id": 3,
-            "roleId": 2,
-            "username": "Gene",
-            "password": null
-        }
-        
-    ],
-    "employes":[
-        {
-            "id":1,
-            "userId": 2,
-            "cedula": "0912345678",
-            "names": "Maximiliano Dante",
-            "lastnames" :"Cuenca Morán",
-            "email": "max@mail.com",
-            "birthDate": null,
-            "address": "Street 123",
-            "cellphone": "0996008960"
-        },
-        {
-            "id":2,
-            "userId": 3,
-            "cedula": "0912345608",
-            "names": "Genesis Lisbeth",
-            "lastnames" :"Cunalata Amaguaya",
-            "email": "genesis@mail.com",
-            "birthDate": null,
-            "address": "Street 1234",
-            "cellphone": "0996008910"
-        }
-        
-    ],
-    
-    "typeVaccines":[
-        {
-            "id":1,
-            "description": "Sputnik"
-        },
-        {
-            "id":2,
-            "description": "AstraZeneca"
-        },
-        {
-            "id":3,
-            "description": "Pfizer"
-        },
-        {
-            "id":4,
-            "description": " Jhonson&Jhonson"
-        }
-    ],
-    "employesVaccines":[
-        {
-            "id": 1,
-            "employesId":1,
-            "typeVaccineId":1,
-            "vaccineDate": null,
-            "doseNumber": 1,
-            "isVaccinated": true
-        }
-    ]
-
+  ],
+  "typeVaccines": [
+    {
+      "id": 1,
+      "description": "Sputnik"
+    },
+    {
+      "id": 2,
+      "description": "AstraZeneca"
+    },
+    {
+      "id": 3,
+      "description": "Pfizer"
+    },
+    {
+      "id": 4,
+      "description": " Jhonson&Jhonson"
+    }
+  ],
+  "employesVaccines": []
 }
