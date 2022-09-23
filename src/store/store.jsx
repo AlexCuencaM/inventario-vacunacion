@@ -10,9 +10,9 @@ export const useStore = () => {
     return useContext(StoreContext);
 };
 export const useStoreDispatch = () => useContext(StoreDispatchContext);
-export const EmployeesProvider = ({ children }) => {
+export const EmployeesProvider = ({ children, init }) => {
     // const [stateWithUseState, setstateWithUseState] = useState("state");
-    const [employes, employesDispatch] = useReducer(employesReducer, employesInitialState)
+    const [employes, employesDispatch] = useReducer(employesReducer, employesInitialState,init)
     const value = {
         state: employes
     };

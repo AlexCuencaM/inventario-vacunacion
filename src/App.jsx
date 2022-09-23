@@ -1,5 +1,5 @@
 import { Grid, Typography } from "@mui/material"
-import { useEffect } from "react"
+import { useEffect, useMemo } from "react"
 import { apiInstance } from "./settings/apiInstance"
 import { getAllEmployes } from "./store/actions/employes"
 import { useStore, useStoreDispatch } from "./store/store"
@@ -14,13 +14,14 @@ const user = {
 }
 
 function App() {
+    const { state } = useStore();
     const { employesDispatch } = useStoreDispatch();
     useEffect(() => {
         apiInstance.get("/employes")
         .then(({ data }) =>{
             employesDispatch(getAllEmployes(data))
         })
-    }, [])
+    }, [state]) // something wrong
     
   return (
     <Navbar user={user}>

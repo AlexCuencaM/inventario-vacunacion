@@ -20,6 +20,7 @@ export default function EmployedCard(props) {
             setDeleteModal(false)
             employesDispatch(employedDeleted())
         })
+        
     else setDeleteModal(false)
   }
   const handleClick = () =>{
