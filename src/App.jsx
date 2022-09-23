@@ -21,7 +21,7 @@ function App() {
         .then(({ data }) =>{
             employesDispatch(getAllEmployes(data))
         })
-    }, [state]) // something wrong
+    }, [])
     
   return (
     <Navbar user={user}>

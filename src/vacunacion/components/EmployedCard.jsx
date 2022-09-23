@@ -18,7 +18,7 @@ export default function EmployedCard(props) {
         apiInstance.delete(`/employes/${employed.id}`)
         .then((res) => {
             setDeleteModal(false)
-            employesDispatch(employedDeleted())
+            employesDispatch(employedDeleted(employed.id))
         })
         
     else setDeleteModal(false)
