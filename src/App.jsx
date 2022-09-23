@@ -1,5 +1,6 @@
 import { Grid, Typography } from "@mui/material"
 import { useEffect, useState } from "react"
+import { apiInstance } from "./settings/apiInstance"
 import Navbar from "./ui/Navbar"
 import { EmployeesList } from "./vacunacion/components/EmployesList"
 const user = {
@@ -8,7 +9,6 @@ const user = {
     username: "Admin",
     password: null
 }
-const url = "http://localhost:3000/employes"
 // const employeesArray = [
 
 //     {
@@ -61,9 +61,10 @@ const url = "http://localhost:3000/employes"
 function App() {
     const [employees, setEmployees] = useState([])
     useEffect(() => {
-      fetch(url)
-      .then(res => res.json())
-      .then(setEmployees);
+        apiInstance.get("/employes")
+        .then(({ data }) =>{
+            setEmployees(data)
+        })
     }, [])
     
   return (
