@@ -23,19 +23,20 @@ let schema = yup.object().shape({
 
 export function EditFormDialog() {
   const { ui, state, employedForm } = useStore();
-//   const { actualEmployed } = state;
+  const { actualEmployed } = state;
   const { setOpenEditModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
         schema.validate(employedForm)
         .then(valid => apiInstance.patch(`/employes/${valid.id}`, employedForm))
-        .catch(err => {
-            alert(err.name)
-            console.log(err.errors)
-        })
         .then(() => {
             setOpenEditModal(false)
             employesDispatch(getEmployed(employedForm))
             employesDispatch(employedPatchedSaved(employedForm))
+        })
+        .catch(err => {
+            alert(err.name)
+            employesDispatch(getEmployed(actualEmployed))
+            console.log(err.errors)
         })
   }
   const handleCancel = () => {
