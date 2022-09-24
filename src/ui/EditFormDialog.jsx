@@ -10,14 +10,15 @@ import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
 yup.addMethod(yup.string, 'integerOnString', function () {
     return this.matches(/^\d+$/, 'La cadena de caracteres solo debe tener números')
 })
-yup.addMethod(yup.string, 'nonIntegerOnString', function () {
-    return this.matches(/^[^0-9()]+$/, 'La cadena de caracteres solo debe tener letras o espacios')
+yup.addMethod(yup.string, 'onlyLetters', function () {
+    
+    return this.matches(/^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$/, 'La cadena de caracteres solo debe tener letras o espacios')
 })
 
 let schema = yup.object().shape({
-    names: yup.string().nonIntegerOnString().required(),
+    names: yup.string().onlyLetters().required(),
     cedula: yup.string().integerOnString().required().length(10, "La cédula debe contener 10 dígitos"),
-    lastnames: yup.string().nonIntegerOnString().required(),
+    lastnames: yup.string().onlyLetters().required(),
     email: yup.string().email(),
   });
 
