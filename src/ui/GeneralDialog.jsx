@@ -1,28 +1,13 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import Button from '@mui/material/Button';
 import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
 import { useStore } from '../store/store';
 export function GeneralDialog(props) {
-  const { valueProp, open, Component, ...other } = props;
+  const { title, Component, children, ...other } = props;
   const { ui } = useStore();
-//   React.useEffect(() => {
-//     if (!open) {
-//       setValue(valueProp);
-//     }
-//   }, [valueProp, open]);
-
-//   const handleCancel = () => {
-//     onClose();
-//   };
-
-//   const handleOk = () => {
-//     onClose(value);
-//   };
-
   return (
     <Dialog
       sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 435 } }}
@@ -41,8 +26,6 @@ export function GeneralDialog(props) {
   );
 }
 
-EditDialog.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  open: PropTypes.bool.isRequired,
-  value: PropTypes.string.isRequired,
+GeneralDialog.propTypes = {
+    title: PropTypes.string.isRequired,
 };

@@ -5,25 +5,14 @@ import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ConfirmDialog } from '../../../ui/ConfirmDialog';
-import { apiInstance } from '../../../settings/apiInstance';
 import { useStoreDispatch } from '../../../store/store';
+import { apiInstance } from '../../../settings/apiInstance';
 import { employedDeleted } from "../../../store/actions/employes"
 export default function EmployedCard(props) {
   const { employed } = props
-  const { employesDispatch } = useStoreDispatch();
-  const [deleteModal, setDeleteModal] = React.useState(false)
-  const onClose = (value) =>{
-    if(value === "confirm")
-        apiInstance.delete(`/employes/${employed.id}`)
-        .then((res) => {
-            setDeleteModal(false)
-            employesDispatch(employedDeleted(employed.id))
-        })
-        
-    else setDeleteModal(false)
-  }
+  const { setOpenModal } = useStoreDispatch();
   const handleClick = () =>{
-    setDeleteModal(true)  
+    setOpenModal(true)  
   }
   return (
     <>
@@ -44,7 +33,7 @@ export default function EmployedCard(props) {
             <Button color="secondary" size="small" onClick={handleClick}>Eliminar</Button>
         </CardActions>
         </Card>
-        <ConfirmDialog onClose={onClose} open={deleteModal} value={"confirm"}/>
+        <ConfirmDialog id={employed.id}/>
     </>
   )
 }
