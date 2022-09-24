@@ -8,3 +8,7 @@ export const getAllEmployes = (employes) => ({
     type: employesType.selectAll,
     payload: employes
 })
+export const getEmployesByStateVaccine = (employesVaccines) => ({
+    type: employesType.employedVaccinated,
+    payload: employesVaccines
+})

@@ -14,6 +14,12 @@ export function employesReducer(state, { type, payload }) {
                 employes: payload
             };
         }
+        case employesType.employedVaccinated: {
+            return {
+                ...state,
+                employes: payload.map(employedVaccined => employedVaccined.employes)
+            };
+        }
         default:
             return state
     }

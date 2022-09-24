@@ -4,7 +4,9 @@ import { apiInstance } from "./settings/apiInstance"
 import { getAllEmployes } from "./store/actions/employes"
 import { useStore, useStoreDispatch } from "./store/store"
 import Navbar from "./ui/Navbar"
+import { StateFilter } from "./vacunacion/components/StateFilter"
 import { EmployeesList } from "./vacunacion/components/EmployesList"
+import { TypeVaccineFilter } from "./vacunacion/components/TypeVaccineFilter"
 
 const user = {
     id: 1,
@@ -14,7 +16,7 @@ const user = {
 }
 
 function App() {
-    const { state } = useStore();
+    
     const { employesDispatch } = useStoreDispatch();
     useEffect(() => {
         apiInstance.get("/employes")
@@ -27,9 +29,15 @@ function App() {
     <Navbar user={user}>
         <Grid container spacing={2}>
             <Grid item md={12} >
-                <Typography variant="h2" gutterBottom >
+                <Typography variant="h2" component="h1" gutterBottom >
                     Inventario - Vacunación
                 </Typography>
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+                <StateFilter/>
+            </Grid>
+            <Grid item xs={12} sm={12} md={6}>
+                <TypeVaccineFilter/>
             </Grid>
             <EmployeesList/>
         </Grid>

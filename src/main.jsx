@@ -6,11 +6,11 @@ import { Theme } from './ui/Theme'
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+//   <React.StrictMode>
     <EmployeesProvider>
         <Theme>
             <App />
         </Theme>
     </EmployeesProvider>
-  </React.StrictMode>
+//   </React.StrictMode>
 )

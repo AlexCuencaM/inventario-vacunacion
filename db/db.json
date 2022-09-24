@@ -34,9 +34,9 @@
         "id":1,
         "userId": 2,
         "cedula": "0912345678",
-        "names": "Maximiliano Dante",
-        "lastnames" :"Cuenca Morán",
-        "email": "max@mail.com",
+        "names": "Kelly Dennisse",
+        "lastnames" :"Villalva Rodriguez",
+        "email": "kely@mail.com",
         "birthDate": null,
         "address": "Street 123",
         "cellphone": "0996008960"
@@ -79,7 +79,15 @@
         "typeVaccineId":1,
         "vaccineDate": null,
         "doseNumber": 1,
-        "isVaccinated": true
+        "state": "Vacunado"
+    },
+    {
+        "id": 2,
+        "employesId":2,
+        "typeVaccineId":2,
+        "vaccineDate": null,
+        "doseNumber": 1,
+        "state": "No_vacunado"
     }
   ]
 }
