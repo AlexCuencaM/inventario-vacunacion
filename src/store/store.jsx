@@ -4,7 +4,8 @@ import { employesReducer } from './reducers/employes';
 const StoreContext = createContext();
 const StoreDispatchContext = createContext();
 const employesInitialState = {
-    employes:[]
+    employes:[],
+    actualEmployed: null
 }
 export const useStore = () => {
     return useContext(StoreContext);

@@ -1,24 +1,24 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import PropTypes from 'prop-types';
 import { useStore } from '../store/store';
 import { useStoreDispatch } from '../store/store';
 import { apiInstance } from '../settings/apiInstance';
-import { employedDeleted } from '../store/actions/employes';
+import { employedDeleted, getEmployed } from '../store/actions/employes';
 import { GeneralDialog } from './GeneralDialog';
 const Body = () => <p>Desea eliminar este empleado ?</p> 
-export function ConfirmDialog(props) {
-  const {id} = props
-  const { ui } = useStore();
-  const { setOpenModal } = useStoreDispatch();
+export function ConfirmDialog() {
+  const { ui, state } = useStore();
+  const { setOpenModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
-        apiInstance.delete(`/employes/${id}`)
+        apiInstance.delete(`/employes/${state.actualEmployed}`)
         .then(() => {
             setOpenModal(false)
-            employesDispatch(employedDeleted(id))
+            employesDispatch(getEmployed(null))
+            employesDispatch(employedDeleted(state.actualEmployed))
         })
   }
   const handleCancel = () => {
+    employesDispatch(getEmployed(null))
     setOpenModal(false)
   };
   return (
@@ -30,7 +30,3 @@ export function ConfirmDialog(props) {
     </GeneralDialog>
   );
 }
-
-ConfirmDialog.propTypes = {
-    id: PropTypes.number.isRequired,
-};

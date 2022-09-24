@@ -7,19 +7,21 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ConfirmDialog } from '../../../ui/ConfirmDialog';
 import { useStoreDispatch } from '../../../store/store';
-import { EditFormDialog } from '../../../ui/EditFormDialog';
+// import { EditFormDialog } from '../../../ui/EditFormDialog';
+import { getEmployed } from '../../../store/actions/employes';
 export default function EmployedCard(props) {
   const { employed } = props
-  const { setOpenModal, setOpenEditModal } = useStoreDispatch();
+  const { setOpenModal, setOpenEditModal, employesDispatch} = useStoreDispatch();
   const handleClick = () =>{
+    employesDispatch(getEmployed(employed))
     setOpenModal(true)  
   }
   const handleEdit = () =>{
+    employesDispatch(getEmployed(employed))
     setOpenEditModal(true)
   }
   return (
-    <>
-        <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 }}>
         <CardContent>
             <Typography gutterBottom variant="h5" component="div">
             {employed.names} {employed.lastnames}
@@ -35,11 +37,8 @@ export default function EmployedCard(props) {
             <Button size="small" onClick={handleEdit}>Editar</Button>
             <Button color="secondary" size="small" onClick={handleClick}>Eliminar</Button>
         </CardActions>
-        </Card>
-        <ConfirmDialog id={employed.id}/>
-        <EditFormDialog />
-
-    </>
+    </Card>
+    
   )
 }
 EmployedCard.propTypes = {

@@ -2,11 +2,13 @@ import { Grid, Typography } from "@mui/material"
 import { useEffect, useMemo } from "react"
 import { apiInstance } from "./settings/apiInstance"
 import { getAllEmployes } from "./store/actions/employes"
-import { useStore, useStoreDispatch } from "./store/store"
+import { useStoreDispatch } from "./store/store"
 import Navbar from "./ui/Navbar"
 import { StateFilter } from "./vacunacion/components/Filters/StateFilter"
 import { EmployeesList } from "./vacunacion/components/Employes/EmployesList"
 import { TypeVaccineFilter } from "./vacunacion/components/Filters/TypeVaccineFilter"
+import { EditFormDialog } from "./ui/EditFormDialog"
+import { ConfirmDialog } from "./ui/ConfirmDialog"
 
 const user = {
     id: 1,
@@ -41,6 +43,8 @@ function App() {
             </Grid>
             <EmployeesList/>
         </Grid>
+        <EditFormDialog />
+        <ConfirmDialog/>
     </Navbar>
   )
 }

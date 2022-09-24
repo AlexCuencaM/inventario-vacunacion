@@ -4,6 +4,10 @@ export const employedDeleted = (id) => ({
     type: employesType.delete,
     payload: id
 });
+export const getEmployed = (employed) =>({
+    type: employesType.select,
+    payload: employed
+})
 export const getAllEmployes = (employes) => ({
     type: employesType.selectAll,
     payload: employes
