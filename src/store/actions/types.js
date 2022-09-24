@@ -1,5 +1,6 @@
 export const employesType = {
-    patch: '[Employes] Empleado modificado',
+    patch: '[Employes] Empleado actual modificado',
+    patchSaved: '[Employes] Empleado actual modificado en la lista',
     delete: '[Employes] Empleado borrado',
     insert: '[Employes] Empleado registrado',
     selectAll: "[Employes] Listando Empleados",

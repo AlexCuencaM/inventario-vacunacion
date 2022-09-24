@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import * as yup from 'yup';
 import { useStoreDispatch } from '../store/store';
 import { apiInstance } from '../settings/apiInstance';
-import { employedPatched } from '../store/actions/employes';
+import { employedPatchedSaved, getEmployed } from '../store/actions/employes';
 import { useStore } from '../store/store';
 import { GeneralDialog } from './GeneralDialog';
 import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
@@ -22,19 +22,20 @@ let schema = yup.object().shape({
   });
 
 export function EditFormDialog() {
-  const { ui, state } = useStore();
-  const { actualEmployed } = state;
+  const { ui, state, employedForm } = useStore();
+//   const { actualEmployed } = state;
   const { setOpenEditModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
-        schema.validate(actualEmployed)
-        .then(valid => apiInstance.patch(`/employes/${valid.id}`) )
+        schema.validate(employedForm)
+        .then(valid => apiInstance.patch(`/employes/${valid.id}`, employedForm))
         .catch(err => {
             alert(err.name)
             console.log(err.errors)
         })
         .then(() => {
             setOpenEditModal(false)
-            employesDispatch(employedPatched(actualEmployed))
+            employesDispatch(getEmployed(employedForm))
+            employesDispatch(employedPatchedSaved(employedForm))
         })
   }
   const handleCancel = () => {

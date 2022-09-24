@@ -9,12 +9,13 @@ import { useStoreDispatch } from '../../../store/store';
 import { getEmployed } from '../../../store/actions/employes';
 export default function EmployedCard(props) {
   const { employed } = props
-  const { setOpenModal, setOpenEditModal, employesDispatch} = useStoreDispatch();
+  const { setOpenModal, setOpenEditModal, employesDispatch, setEmployedForm} = useStoreDispatch();
   const handleClick = () =>{
     employesDispatch(getEmployed(employed))
     setOpenModal(true)  
   }
   const handleEdit = () =>{
+    setEmployedForm(employed)
     employesDispatch(getEmployed(employed))
     setOpenEditModal(true)
   }

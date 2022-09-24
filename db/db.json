@@ -33,10 +33,10 @@
     {
       "id": 1,
       "userId": 2,
-      "cedula": "0912345678",
+      "cedula": "0912345670",
       "names": "Kelly Dennisse",
       "lastnames": "Villalva Rodriguez",
-      "email": "kely@mail.com",
+      "email": "kelly@mail.com",
       "birthDate": null,
       "address": "Street 123",
       "cellphone": "0996008960"

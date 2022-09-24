@@ -7,13 +7,13 @@ export function employesReducer(state, { type, payload }) {
                 employes: state.employes.filter(employed => employed.id != payload)
             }
         }
-        case employesType.patch:{
+        case employesType.patchSaved:{
             return {
                 ...state,
                 employes: state.employes.map(employed => employed.id === payload.id 
                     ? payload : employed)
             }
-        }
+        } 
         case employesType.select: {
             return {
                 ...state,

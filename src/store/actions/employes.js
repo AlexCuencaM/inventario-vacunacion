@@ -5,11 +5,10 @@ export const employedDeleted = (id) => ({
     payload: id
 });
 
-export const employedPatched = (actualEmployed) => ({
-    type: employesType.patch,
-    payload: actualEmployed
+export const employedPatchedSaved = (employed) => ({
+    type: employesType.patchSaved,
+    payload: employed
 });
-
 
 export const getEmployed = (actualEmployed) =>({
     type: employesType.select,
