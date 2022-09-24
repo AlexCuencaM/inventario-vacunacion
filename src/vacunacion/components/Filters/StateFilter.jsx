@@ -1,19 +1,18 @@
 import * as React from 'react';
-import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useStoreDispatch } from '../../store/store';
-import { getAllEmployes, getEmployesByStateVaccine } from '../../store/actions/employes';
-import { apiInstance } from '../../settings/apiInstance';
+import { useStoreDispatch } from '../../../store/store';
+import { getAllEmployes, getEmployesByStateVaccine } from '../../../store/actions/employes';
+import { apiInstance } from '../../../settings/apiInstance';
 const stateVaccineFilter = {
-    all: "",
+    all: 0,
     vaccinated: "Vacunado",
     noVaccinated: "No_vacunado"
 }
 export const StateFilter = () => {
-  const [vaccineState, setvaccineState] = React.useState('');
+  const [vaccineState, setvaccineState] = React.useState(0);
   const { employesDispatch } = useStoreDispatch();
   const handleChange = ({ target }) => {
     const { value } = target;
@@ -34,7 +33,6 @@ export const StateFilter = () => {
   };
 
   return (
-    // <Box>
       <FormControl fullWidth>
         <InputLabel id="vaccine-type-label">Estado</InputLabel>
         <Select
@@ -49,6 +47,5 @@ export const StateFilter = () => {
           <MenuItem value={stateVaccineFilter.noVaccinated}>No vacunados</MenuItem>
         </Select>
       </FormControl>
-    // </Box>
   );
 }

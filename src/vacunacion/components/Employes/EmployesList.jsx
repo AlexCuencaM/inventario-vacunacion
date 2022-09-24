@@ -1,8 +1,8 @@
 import { Grid } from "@mui/material"
 import { useEffect } from "react";
-import { apiInstance } from "../../settings/apiInstance";
-import { getAllEmployes } from "../../store/actions/employes";
-import { useStore, useStoreDispatch } from "../../store/store"
+import { apiInstance } from "../../../settings/apiInstance";
+import { getAllEmployes } from "../../../store/actions/employes";
+import { useStore, useStoreDispatch } from "../../../store/store"
 import EmployedCard from "./EmployedCard"
 export const EmployeesList = () =>{
     const { state } = useStore();

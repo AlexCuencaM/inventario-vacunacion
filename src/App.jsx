@@ -4,9 +4,9 @@ import { apiInstance } from "./settings/apiInstance"
 import { getAllEmployes } from "./store/actions/employes"
 import { useStore, useStoreDispatch } from "./store/store"
 import Navbar from "./ui/Navbar"
-import { StateFilter } from "./vacunacion/components/StateFilter"
-import { EmployeesList } from "./vacunacion/components/EmployesList"
-import { TypeVaccineFilter } from "./vacunacion/components/TypeVaccineFilter"
+import { StateFilter } from "./vacunacion/components/Filters/StateFilter"
+import { EmployeesList } from "./vacunacion/components/Employes/EmployesList"
+import { TypeVaccineFilter } from "./vacunacion/components/Filters/TypeVaccineFilter"
 
 const user = {
     id: 1,

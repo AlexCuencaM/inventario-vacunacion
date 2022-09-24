@@ -3,12 +3,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { useStoreDispatch } from '../../store/store';
-import { getAllEmployes, getEmployesByStateVaccine } from '../../store/actions/employes';
-import { apiInstance } from '../../settings/apiInstance';
+import { useStoreDispatch } from '../../../store/store';
+import { getAllEmployes, getEmployesByTypeVaccine } from '../../../store/actions/employes';
+import { apiInstance } from '../../../settings/apiInstance';
 
 export const TypeVaccineFilter = () => {
-  const [typeVaccine, setTypeVaccine] = React.useState('Todos');
+  const [typeVaccine, setTypeVaccine] = React.useState(0);
   const [typeVaccines, setTypeVaccines] = React.useState([{
     id: 0,
     description: "Todos"
@@ -22,7 +22,6 @@ export const TypeVaccineFilter = () => {
   }, [])
   
   const handleChange = ({ target }) => {
-    console.log(target)
     const { value } = target;
     setTypeVaccine(value);
     if(value === 0){
@@ -34,13 +33,12 @@ export const TypeVaccineFilter = () => {
     else {
         apiInstance.get(`/employesVaccines?_expand=employes&typeVaccineId=${value}`)
         .then(({ data }) =>{
-            employesDispatch(getEmployesByStateVaccine(data))
+            employesDispatch(getEmployesByTypeVaccine(data))
         })
     }
   };
 
   return (
-    // <Box sx={{ minWidth: 500 }}>
       <FormControl fullWidth>
         <InputLabel id="vaccine-type-label">Tipo</InputLabel>
         <Select
@@ -53,6 +51,5 @@ export const TypeVaccineFilter = () => {
             {typeVaccines.map(typeVaccine => <MenuItem key={typeVaccine.id} value={typeVaccine.id}>{typeVaccine.description}</MenuItem>)}
         </Select>
       </FormControl>
-    // </Box>
   );
 }

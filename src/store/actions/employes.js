@@ -12,3 +12,7 @@ export const getEmployesByStateVaccine = (employesVaccines) => ({
     type: employesType.employedVaccinated,
     payload: employesVaccines
 })
+export const getEmployesByTypeVaccine = (employesVaccines) => ({
+    type: employesType.typeVaccine,
+    payload: employesVaccines
+})
