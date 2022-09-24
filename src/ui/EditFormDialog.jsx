@@ -11,7 +11,6 @@ yup.addMethod(yup.string, 'integerOnString', function () {
     return this.matches(/^\d+$/, 'La cadena de caracteres solo debe tener números')
 })
 yup.addMethod(yup.string, 'onlyLetters', function () {
-    
     return this.matches(/^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$/, 'La cadena de caracteres solo debe tener letras o espacios')
 })
 
@@ -35,9 +34,8 @@ export function EditFormDialog() {
             employesDispatch(employedPatchedSaved(employedForm))
         })
         .catch(err => {
-            alert(err.name)
+            alert(err.errors[0])
             employesDispatch(getEmployed(actualEmployed))
-            console.log(err.errors)
         })
   }
   const handleCancel = () => {

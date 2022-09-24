@@ -5,5 +5,5 @@ const envs = {
 export const apiInstance = axios.create({
     baseURL: envs.apiUrl,
     //json-server needs this header for post,put and patch requests
-    headers: {'Content-Type': 'application/json'}
+    // headers: {'Content-Type': 'application/json'}
 });
