@@ -1,4 +1,5 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,8 +7,6 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ConfirmDialog } from '../../../ui/ConfirmDialog';
 import { useStoreDispatch } from '../../../store/store';
-import { apiInstance } from '../../../settings/apiInstance';
-import { employedDeleted } from "../../../store/actions/employes"
 export default function EmployedCard(props) {
   const { employed } = props
   const { setOpenModal } = useStoreDispatch();
@@ -33,7 +32,10 @@ export default function EmployedCard(props) {
             <Button color="secondary" size="small" onClick={handleClick}>Eliminar</Button>
         </CardActions>
         </Card>
-        <ConfirmDialog id={employed.id}/>
+        <ConfirmDialog title="Confirmación de eliminación" id={employed.id}/>
     </>
   )
 }
+EmployedCard.propTypes = {
+    employed: PropTypes.object.isRequired,
+};

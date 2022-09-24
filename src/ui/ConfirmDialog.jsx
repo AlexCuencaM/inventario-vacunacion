@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import PropTypes from 'prop-types';
 import { useStoreDispatch } from '../store/store';
 import { apiInstance } from '../settings/apiInstance';
 import { employedDeleted } from '../store/actions/employes';
@@ -18,9 +19,7 @@ export function ConfirmDialog(props) {
   const handleCancel = () => {
     setOpenModal(false)
   };
-
   return (
-   
     <GeneralDialog title="Confirmacion de eliminación" Component={Body}>
         <Button autoFocus onClick={handleCancel}>
           No
@@ -29,3 +28,7 @@ export function ConfirmDialog(props) {
     </GeneralDialog>
   );
 }
+
+ConfirmDialog.propTypes = {
+    title: PropTypes.string.isRequired,
+};
