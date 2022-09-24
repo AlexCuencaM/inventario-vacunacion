@@ -7,11 +7,15 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { ConfirmDialog } from '../../../ui/ConfirmDialog';
 import { useStoreDispatch } from '../../../store/store';
+import { EditFormDialog } from '../../../ui/EditFormDialog';
 export default function EmployedCard(props) {
   const { employed } = props
-  const { setOpenModal } = useStoreDispatch();
+  const { setOpenModal, setOpenEditModal } = useStoreDispatch();
   const handleClick = () =>{
     setOpenModal(true)  
+  }
+  const handleEdit = () =>{
+    setOpenEditModal(true)
   }
   return (
     <>
@@ -28,11 +32,13 @@ export default function EmployedCard(props) {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small">Editar</Button>
+            <Button size="small" onClick={handleEdit}>Editar</Button>
             <Button color="secondary" size="small" onClick={handleClick}>Eliminar</Button>
         </CardActions>
         </Card>
-        <ConfirmDialog title="Confirmación de eliminación" id={employed.id}/>
+        <ConfirmDialog id={employed.id}/>
+        <EditFormDialog />
+
     </>
   )
 }

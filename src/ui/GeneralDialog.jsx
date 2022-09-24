@@ -4,15 +4,14 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 import Dialog from '@mui/material/Dialog';
-import { useStore } from '../store/store';
+
 export function GeneralDialog(props) {
-  const { title, Component, children, ...other } = props;
-  const { ui } = useStore();
+  const { title, Component, children, open, ...other } = props;
   return (
     <Dialog
       sx={{ '& .MuiDialog-paper': { width: '80%', maxHeight: 435 } }}
       maxWidth="xs"
-      open={ui.openModal}
+      open={open}
       {...other}
     >
       <DialogTitle>{ title } </DialogTitle>
@@ -27,5 +26,6 @@ export function GeneralDialog(props) {
 }
 
 GeneralDialog.propTypes = {
+    open: PropTypes.bool.isRequired,
     title: PropTypes.string.isRequired,
 };

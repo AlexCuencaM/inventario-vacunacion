@@ -12,16 +12,19 @@ export const useStore = () => {
 export const useStoreDispatch = () => useContext(StoreDispatchContext);
 export const EmployeesProvider = ({ children, init }) => {
     const [openModal, setOpenModal] = useState(false);
+    const [openEditModal, setOpenEditModal] = useState(false);
     const [employes, employesDispatch] = useReducer(employesReducer, employesInitialState,init)
     const value = {
         state: employes,
         ui: {
-            openModal
+            openModal,
+            openEditModal
         }
     };
     const valuesDispatches = {
         employesDispatch,
-        setOpenModal
+        setOpenModal,
+        setOpenEditModal
     };
 
     return (

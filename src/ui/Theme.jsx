@@ -3,7 +3,7 @@ import { blue, red } from '@mui/material/colors';
 import { ThemeProvider } from '@emotion/react';
 import { CssBaseline } from '@mui/material';
 
-const themePalette = createTheme({
+const themeDarkPalette = createTheme({
   palette: {
     mode: "dark",
     primary: {
@@ -14,10 +14,21 @@ const themePalette = createTheme({
     },
   },
 });
+const themeLightPalette = createTheme({
+    palette: {
+      mode: "light",
+      primary: {
+        main: blue[700],
+      },
+      secondary: {
+        main: red[700],
+      },
+    },
+  });
 
 export const Theme = ({children}) =>{
     return (
-        <ThemeProvider theme={themePalette}>
+        <ThemeProvider theme={themeDarkPalette}>
             <CssBaseline/>
             {children}
         </ThemeProvider>
