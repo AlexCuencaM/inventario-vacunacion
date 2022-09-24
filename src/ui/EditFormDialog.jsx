@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import PropTypes from 'prop-types';
 import { useStoreDispatch } from '../store/store';
 import { apiInstance } from '../settings/apiInstance';
 import { employedDeleted } from '../store/actions/employes';
@@ -8,15 +7,15 @@ import { useStore } from '../store/store';
 import { GeneralDialog } from './GeneralDialog';
 import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
 export function EditFormDialog() {
-//   const {ti} = props
-  const { ui } = useStore();
-  const { setOpenEditModal } = useStoreDispatch();
+  const { ui, state } = useStore();
+  const { actualEmployed } = state;
+  const { setOpenEditModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
-        // apiInstance.delete(`/employes/${id}`)
-        // .then(() => {
-        //     setOpenEditModal(false)
-        //     employesDispatch(employedDeleted(id))
-        // })
+        apiInstance.patch(`/employes/${actualEmployed.id}`)
+        .then(() => {
+            setOpenEditModal(false)
+            employesDispatch(employedDeleted(id))
+        })
   }
   const handleCancel = () => {
     setOpenEditModal(false)
@@ -30,7 +29,3 @@ export function EditFormDialog() {
     </GeneralDialog>
   );
 }
-
-// EditFormDialog.propTypes = {
-//     title: PropTypes.string.isRequired,
-// };

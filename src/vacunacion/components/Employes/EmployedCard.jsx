@@ -5,9 +5,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { ConfirmDialog } from '../../../ui/ConfirmDialog';
 import { useStoreDispatch } from '../../../store/store';
-// import { EditFormDialog } from '../../../ui/EditFormDialog';
 import { getEmployed } from '../../../store/actions/employes';
 export default function EmployedCard(props) {
   const { employed } = props

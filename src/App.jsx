@@ -18,7 +18,6 @@ const user = {
 }
 
 function App() {
-    
     const { employesDispatch } = useStoreDispatch();
     useEffect(() => {
         apiInstance.get("/employes")

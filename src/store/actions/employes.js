@@ -4,9 +4,16 @@ export const employedDeleted = (id) => ({
     type: employesType.delete,
     payload: id
 });
-export const getEmployed = (employed) =>({
+
+export const employedPatched = (actualEmployed) => ({
+    type: employesType.patch,
+    payload: actualEmployed
+});
+
+
+export const getEmployed = (actualEmployed) =>({
     type: employesType.select,
-    payload: employed
+    payload: actualEmployed
 })
 export const getAllEmployes = (employes) => ({
     type: employesType.selectAll,
