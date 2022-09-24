@@ -1,20 +1,40 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
+import * as yup from 'yup';
 import { useStoreDispatch } from '../store/store';
 import { apiInstance } from '../settings/apiInstance';
-import { employedDeleted } from '../store/actions/employes';
+import { employedPatched } from '../store/actions/employes';
 import { useStore } from '../store/store';
 import { GeneralDialog } from './GeneralDialog';
 import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
+yup.addMethod(yup.string, 'integerOnString', function () {
+    return this.matches(/^\d+$/, 'La cadena de caracteres solo debe tener números')
+})
+yup.addMethod(yup.string, 'nonIntegerOnString', function () {
+    return this.matches(/^[^0-9()]+$/, 'La cadena de caracteres solo debe tener letras o espacios')
+})
+
+let schema = yup.object().shape({
+    names: yup.string().nonIntegerOnString().required(),
+    cedula: yup.string().integerOnString().required().length(10, "La cédula debe contener 10 dígitos"),
+    lastnames: yup.string().nonIntegerOnString().required(),
+    email: yup.string().email(),
+  });
+
 export function EditFormDialog() {
   const { ui, state } = useStore();
   const { actualEmployed } = state;
   const { setOpenEditModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
-        apiInstance.patch(`/employes/${actualEmployed.id}`)
+        schema.validate(actualEmployed)
+        .then(valid => apiInstance.patch(`/employes/${valid.id}`) )
+        .catch(err => {
+            alert(err.name)
+            console.log(err.errors)
+        })
         .then(() => {
             setOpenEditModal(false)
-            employesDispatch(employedDeleted(id))
+            employesDispatch(employedPatched(actualEmployed))
         })
   }
   const handleCancel = () => {
