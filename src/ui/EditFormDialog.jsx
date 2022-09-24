@@ -34,7 +34,7 @@ export function EditFormDialog() {
             employesDispatch(employedPatchedSaved(employedForm))
         })
         .catch(err => {
-            alert(err.errors[0])
+            alert(err.message)
             employesDispatch(getEmployed(actualEmployed))
         })
   }
