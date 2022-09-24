@@ -29,17 +29,28 @@
       "password": null
     }
   ],
-  "employes": [
+  "employes":[
     {
-      "id": 1,
-      "userId": 2,
-      "cedula": "0912345678",
-      "names": "Kelly Dennisse",
-      "lastnames": "Villalva Rodriguez",
-      "email": "kely@mail.com",
-      "birthDate": null,
-      "address": "Street 123",
-      "cellphone": "0996008960"
+        "id":1,
+        "userId": 2,
+        "cedula": "0912345678",
+        "names": "Kelly Dennisse",
+        "lastnames" :"Villalva Rodriguez",
+        "email": "kely@mail.com",
+        "birthDate": null,
+        "address": "Street 123",
+        "cellphone": "0996008960"
+    },
+    {
+        "id":2,
+        "userId": 3,
+        "cedula": "0912345608",
+        "names": "Genesis Lisbeth",
+        "lastnames" :"Cunalata Amaguaya",
+        "email": "genesis@mail.com",
+        "birthDate": null,
+        "address": "Street 1234",
+        "cellphone": "0996008910"
     }
   ],
   "typeVaccines": [
@@ -60,14 +71,22 @@
       "description": " Jhonson&Jhonson"
     }
   ],
-  "employesVaccines": [
+  "employesVaccines":[
     {
-      "id": 1,
-      "employesId": 1,
-      "typeVaccineId": 1,
-      "vaccineDate": null,
-      "doseNumber": 1,
-      "state": "Vacunado"
+        "id": 1,
+        "employesId":1,
+        "typeVaccineId":1,
+        "vaccineDate": null,
+        "doseNumber": 1,
+        "state": "Vacunado"
+    },
+    {
+        "id": 2,
+        "employesId":2,
+        "typeVaccineId":2,
+        "vaccineDate": null,
+        "doseNumber": 1,
+        "state": "No_vacunado"
     }
   ]
 }
