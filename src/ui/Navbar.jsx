@@ -11,6 +11,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { drawerWidth, generalOptions, menuByRole } from '../vacunacion/helpers/helpers';
 import { ItemNavbar } from './ItemNavbar';
+import { ModeNightSwitch } from './ModeNightSwitch';
 function Navbar(props) {
   const { window , user} = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -29,8 +30,8 @@ function Navbar(props) {
       </List>
       <Divider />
       <List>
-        {generalOptions.map((opt, index) => (
-          <ItemNavbar key={`${opt.route} ${index}`} opt={opt}/>
+        {generalOptions.map((opt, index) =>(
+            <ItemNavbar key={`${opt.label} ${index}`} opt={opt}/> 
         ))}
       </List>
     </div>
@@ -48,7 +49,12 @@ function Navbar(props) {
           ml: { sm: `${drawerWidth}px` },
         }}
       >
-        <Toolbar>
+        <Toolbar
+            sx={{
+                display:{md: "flex"} ,
+                justifyContent: {md: "space-between"} 
+            }}
+        >
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -61,6 +67,7 @@ function Navbar(props) {
           <Typography variant="h6" noWrap component="div">
             Usuario: {user.username}
           </Typography>
+          <ModeNightSwitch/>
         </Toolbar>
       </AppBar>
       <Box
