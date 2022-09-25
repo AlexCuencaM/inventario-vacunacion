@@ -1,13 +1,11 @@
 import * as React from 'react';
-import Button from '@mui/material/Button';
 import * as yup from 'yup';
-import { useStoreDispatch } from '../store/store';
-import { apiInstance } from '../settings/apiInstance';
-import { employedPatchedSaved, getEmployed } from '../store/actions/employes';
-import { useStore } from '../store/store';
-import { GeneralDialog } from './GeneralDialog';
-import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
-
+import Button from '@mui/material/Button';
+import { EmployedForm } from './EmployedForm';
+import { employedFormInitialState, useStore, useStoreDispatch } from '../../../store/store';
+import { employedPatchedSaved, getEmployed } from '../../../store/actions/employes';
+import { apiInstance } from '../../../settings/apiInstance';
+import { Grid } from '@mui/material';
 yup.addMethod(yup.string, 'integerOnString', function () {
     return this.matches(/^\d+$/, 'La cadena de caracteres solo debe tener números')
 })
@@ -22,34 +20,34 @@ let schema = yup.object().shape({
     email: yup.string().email(),
   });
 
-export function EditFormDialog() {
-  const { ui, state, employedForm } = useStore();
+export function NewEmployedForm() {
+  const { state, employedForm } = useStore();
   const { actualEmployed } = state;
-  const { setOpenEditModal, employesDispatch, setEmployedForm } = useStoreDispatch();
+  const { employesDispatch, setEmployedForm } = useStoreDispatch();
+  //It have to load before layout
+  React.useLayoutEffect (() => {
+    setEmployedForm(employedFormInitialState)
+  }, [employedFormInitialState])
+  
   const handleOk = () =>{
         schema.validate(employedForm)
-        .then(valid => apiInstance.patch(`/employes/${valid.id}`, employedForm))
+        .then(valid => apiInstance.post(`/employes/${valid.id}`, employedForm))
         .then(() => {
-            setOpenEditModal(false)
             employesDispatch(getEmployed(employedForm))
             employesDispatch(employedPatchedSaved(employedForm))
-            
         })
         .catch(err => {
             alert(err.message)
             employesDispatch(getEmployed(actualEmployed))
         })
-        
   }
-  const handleCancel = () => {
-      setOpenEditModal(false)
-  };
   return (
-    <GeneralDialog open={ui.openEditModal} title="Editar empleado" Component={EmployedForm}>
-        <Button autoFocus onClick={handleCancel}>
-          Cancelar
-        </Button>
-        <Button color="primary" onClick={handleOk}>Modificar</Button>
-    </GeneralDialog>
+    <Grid>
+        <EmployedForm columns={2} variant="outlined"/>
+        <Grid item md={2}>
+            <Button variant="contained" color="primary" onClick={handleOk}>Registrar</Button>
+        </Grid>
+    </Grid>
+    
   );
 }
