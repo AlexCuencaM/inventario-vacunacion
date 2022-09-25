@@ -7,25 +7,26 @@ import { employedPatchedSaved, getEmployed } from '../store/actions/employes';
 import { useStore } from '../store/store';
 import { GeneralDialog } from './GeneralDialog';
 import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
+import { schema } from '../vacunacion/helpers/helpers';
 
-yup.addMethod(yup.string, 'integerOnString', function () {
-    return this.matches(/^\d+$/, 'La cadena de caracteres solo debe tener números')
-})
-yup.addMethod(yup.string, 'onlyLetters', function () {
-    return this.matches(/^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$/, 'La cadena de caracteres solo debe tener letras o espacios')
-})
+// yup.addMethod(yup.string, 'integerOnString', function () {
+//     return this.matches(/^\d+$/, 'La cadena de caracteres solo debe tener números')
+// })
+// yup.addMethod(yup.string, 'onlyLetters', function () {
+//     return this.matches(/^[A-Za-z]+((\s)?((\'|\-|\.)?([A-Za-z])+))*$/, 'La cadena de caracteres solo debe tener letras o espacios')
+// })
 
-let schema = yup.object().shape({
-    names: yup.string().onlyLetters().required(),
-    cedula: yup.string().integerOnString().required().length(10, "La cédula debe contener 10 dígitos"),
-    lastnames: yup.string().onlyLetters().required(),
-    email: yup.string().email(),
-  });
+// let schema = yup.object().shape({
+//     names: yup.string().onlyLetters().required(),
+//     cedula: yup.string().integerOnString().required().length(10, "La cédula debe contener 10 dígitos"),
+//     lastnames: yup.string().onlyLetters().required(),
+//     email: yup.string().email(),
+//   });
 
 export function EditFormDialog() {
   const { ui, state, employedForm } = useStore();
   const { actualEmployed } = state;
-  const { setOpenEditModal, employesDispatch, setEmployedForm } = useStoreDispatch();
+  const { setOpenEditModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
         schema.validate(employedForm)
         .then(valid => apiInstance.patch(`/employes/${valid.id}`, employedForm))

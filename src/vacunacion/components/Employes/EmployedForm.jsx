@@ -32,7 +32,6 @@ export const EmployedForm = (props) =>{
             </Grid>
             <Grid item xs={12} sm={12} md={columns}>
                 <TextField
-                    autoFocus
                     margin="dense"
                     id="names"
                     name="names"
@@ -46,7 +45,6 @@ export const EmployedForm = (props) =>{
             </Grid>
             <Grid item xs={12} sm={12} md={columns}>
                 <TextField
-                autoFocus
                 margin="dense"
                 id="lastnames"
                 name="lastnames"
@@ -60,7 +58,6 @@ export const EmployedForm = (props) =>{
             </Grid>
             <Grid item xs={12} sm={12} md={columns}>
                 <TextField
-                autoFocus
                 margin="dense"
                 id="email"
                 name="email"
