@@ -32,10 +32,12 @@ export function NewEmployedForm() {
   
   const handleOk = () =>{
         schema.validate(employedForm)
-        .then(valid => apiInstance.post(`/employes/${valid.id}`, employedForm))
-        .then(() => {
+        .then(valid => apiInstance.post(`/employes`, employedForm))
+        .then((data) => {
             employesDispatch(getEmployed(employedForm))
             employesDispatch(employedPatchedSaved(employedForm))
+            alert("Empleado registrado correctamente")
+            setEmployedForm(employedFormInitialState)
         })
         .catch(err => {
             alert(err.message)

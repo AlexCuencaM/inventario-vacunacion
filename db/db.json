@@ -51,6 +51,27 @@
       "birthDate": null,
       "address": "Street 1234",
       "cellphone": "0996008910"
+    },
+    {
+      "cedula": "0982463317",
+      "names": "Alex Eliecer",
+      "lastnames": "Cuenca Moran",
+      "email": "alex@mail.com",
+      "id": 3
+    },
+    {
+      "cedula": "0985326574",
+      "names": "Maximiliano",
+      "lastnames": "Cuenca",
+      "email": "max@mail.com",
+      "id": 4
+    },
+    {
+      "cedula": "0914236875",
+      "names": "Dante Maximiliano",
+      "lastnames": "Cuenca Moran",
+      "email": "dante@mail.com",
+      "id": 5
     }
   ],
   "typeVaccines": [
