@@ -1,4 +1,4 @@
-import { EmployesView } from "./vacunacion/pages/EmployesView"
+import { AppRouter } from "./router/AppRouter"
 
 const user = {
     id: 1,
@@ -9,7 +9,7 @@ const user = {
 
 function App() {
   return (
-    <EmployesView/>
+    <AppRouter/>
   )
 }
 

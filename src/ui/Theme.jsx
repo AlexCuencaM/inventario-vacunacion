@@ -12,6 +12,7 @@ const themeDarkPalette = createTheme({
     secondary: {
       main: red[200],
     },
+    
   },
 });
 const themeLightPalette = createTheme({

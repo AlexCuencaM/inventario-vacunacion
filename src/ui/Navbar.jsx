@@ -1,28 +1,19 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-
-const drawerWidth = 240;
-const menuByRole = (roleId) => roleId === 1 ? ["Crear un empleado", "Ver empleados"]
-    : ["Actualizar Información"]
+import { drawerWidth, generalOptions, menuByRole } from '../vacunacion/helpers/helpers';
+import { ItemNavbar } from './ItemNavbar';
 function Navbar(props) {
-  const { window } = props;
+  const { window , user} = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [user, setUser] = React.useState(props.user);
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -32,22 +23,14 @@ function Navbar(props) {
       <Toolbar />
       <Divider />
       <List>
-        {menuByRole(user.roleId).map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {menuByRole(user.roleId).map((opt, index) => (
+          <ItemNavbar key={`${opt.route} ${index}`} opt={opt}/>
         ))}
       </List>
       <Divider />
       <List>
-        {['Cerrar sesión'].map((text) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
+        {generalOptions.map((opt, index) => (
+          <ItemNavbar key={`${opt.route} ${index}`} opt={opt}/>
         ))}
       </List>
     </div>
