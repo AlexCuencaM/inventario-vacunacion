@@ -10,11 +10,11 @@ export function ConfirmDialog() {
   const { ui, state } = useStore();
   const { setOpenModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
-        apiInstance.delete(`/employes/${state.actualEmployed}`)
+        apiInstance.delete(`/employes/${state.actualEmployed.id}`)
         .then(() => {
             setOpenModal(false)
             employesDispatch(getEmployed(null))
-            employesDispatch(employedDeleted(state.actualEmployed))
+            employesDispatch(employedDeleted(state.actualEmployed.id))
         })
   }
   const handleCancel = () => {

@@ -34,7 +34,7 @@
       "id": 1,
       "userId": 2,
       "cedula": "0912345670",
-      "names": "Kelly Denisse",
+      "names": "Kelly Dennisse",
       "lastnames": "Villalva Rodriguez",
       "email": "kelly@mail.com",
       "birthDate": null,
@@ -60,18 +60,18 @@
       "id": 3
     },
     {
-      "cedula": "0985326574",
-      "names": "Maximiliano",
-      "lastnames": "Cuenca",
-      "email": "max@mail.com",
-      "id": 4
-    },
-    {
       "cedula": "0914236875",
       "names": "Dante Maximiliano",
       "lastnames": "Cuenca Moran",
       "email": "dante@mail.com",
       "id": 5
+    },
+    {
+      "cedula": "0928643894",
+      "names": "Mary",
+      "lastnames": "Currie M",
+      "email": "mary@mail.com",
+      "id": 6
     }
   ],
   "typeVaccines": [
