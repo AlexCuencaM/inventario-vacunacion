@@ -8,6 +8,7 @@ import { EmployeesList } from "../components/Employes/EmployesList"
 import { TypeVaccineFilter } from "../components/Filters/TypeVaccineFilter"
 import { EditFormDialog } from "../../ui/EditFormDialog"
 import { ConfirmDialog } from "../../ui/ConfirmDialog"
+import { RegistrerEmployedDialog } from "../../ui/RegistrerEmployedDialog"
 
 export const EmployesView = () => {
     const { employesDispatch } = useStoreDispatch();
@@ -36,6 +37,7 @@ export const EmployesView = () => {
         </Grid>
         <EditFormDialog />
         <ConfirmDialog/>
+        <RegistrerEmployedDialog/>
     </>
   )
 }
