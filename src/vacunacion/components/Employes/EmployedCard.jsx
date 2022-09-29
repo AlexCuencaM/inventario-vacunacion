@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { useStoreDispatch } from '../../../store/store';
 import { getEmployed } from '../../../store/actions/employes';
+import { EmployedHeaderCard } from './EmployedHeaderCard';
 export default function EmployedCard(props) {
   const { employed } = props
   const { setOpenModal, setOpenEditModal, employesDispatch, setEmployedForm} = useStoreDispatch();
@@ -19,12 +20,11 @@ export default function EmployedCard(props) {
     employesDispatch(getEmployed(employed))
     setOpenEditModal(true)
   }
+  
   return (
     <Card sx={{ maxWidth: 345 }}>
+        <EmployedHeaderCard employed={employed}/>
         <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
-            {employed.names} {employed.lastnames}
-            </Typography>
             <Typography variant="body2" color="text.secondary">
             Cédula: {employed.cedula}
             </Typography>
