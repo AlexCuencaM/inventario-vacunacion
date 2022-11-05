@@ -17,7 +17,7 @@ export const EmployedHeaderCard = (props) => {
     <CardHeader
         avatar={
             <Avatar sx={{ bgcolor: theme.palette.primary.main }} aria-label="employed-avatar">
-                {employed.names[0]}
+                {employed.Names[0]}
             </Avatar>}
         action={
             <Tooltip title="Dar alta">
@@ -26,8 +26,8 @@ export const EmployedHeaderCard = (props) => {
                 </IconButton>
             </Tooltip>
             }
-        title={employed.names}
-        subheader={employed.lastnames}
+        title={employed.Names}
+        subheader={employed.Lastnames}
     />
   )
 }

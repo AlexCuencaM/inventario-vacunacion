@@ -8,3 +8,6 @@ export const employesType = {
     employedVaccinated: "[Employes] Empleados vacunados o no",
     typeVaccine: "[Employes] Empleados vacunado por tipo de vacuna",
 };
+export const usersType = {
+    register: "[Users] Usuario creado"
+}

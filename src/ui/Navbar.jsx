@@ -24,7 +24,7 @@ function Navbar(props) {
       <Toolbar />
       <Divider />
       <List>
-        {menuByRole(user.roleId).map((opt, index) => (
+        {menuByRole(user).map((opt, index) => (
           <ItemNavbar key={`${opt.route} ${index}`} opt={opt}/>
         ))}
       </List>

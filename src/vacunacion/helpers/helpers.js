@@ -7,10 +7,10 @@ yup.addMethod(yup.string, 'onlyLetters', function () {
 })
 
 export const schema = yup.object().shape({
-    names: yup.string().onlyLetters().required(),
-    cedula: yup.string().integerOnString().required().length(10, "La cédula debe contener 10 dígitos"),
-    lastnames: yup.string().onlyLetters().required(),
-    email: yup.string().email(),
+    Names: yup.string().onlyLetters().required(),
+    Cedula: yup.string().integerOnString().required().length(10, "La cédula debe contener 10 dígitos"),
+    Lastnames: yup.string().onlyLetters().required(),
+    Email: yup.string().email(),
   });
 
 export const drawerWidth = 240;
@@ -22,8 +22,8 @@ export const generalOptions = [
     }
 ]
 
-export const menuByRole = (roleId) =>{
-    const prefix = roleId === 1 ? "/admin/employes" : "/employed"
+export const menuByRole = (user) =>{
+    const prefix = user.RoleId === 1 ? "/admin/employes" : "/employed"
     const menu = [
         {
             roleId: 1,
@@ -41,5 +41,5 @@ export const menuByRole = (roleId) =>{
             route: `${prefix}/update`
         }
     ]
-    return menu.filter(opt => opt.roleId === roleId)
+    return menu.filter(opt => opt.roleId === user.RoleId)
 } 

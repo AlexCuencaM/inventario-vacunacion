@@ -1,36 +1,39 @@
+import EmployeeAdapter from "../../domain/Employees/EmployeeAdapter";
 import { employesType } from "../actions/types";
 export function employesReducer(state, { type, payload }) {
+    let adapter = new EmployeeAdapter();
     switch (type) {
         case employesType.delete: {
             return {
                 ...state,
-                employes: state.employes.filter(employed => employed.id != payload)
+                employes: state.employes.filter(employed => employed.Id != payload)
             }
         }
         case employesType.patchSaved:{
+            const employee = adapter.createFromDB(payload)
             return {
                 ...state,
-                employes: state.employes.map(employed => employed.id === payload.id 
-                    ? payload : employed)
+                employes: state.employes.map(employed => employed.Id === employee.Id 
+                    ? employee : employed)
             }
         } 
         case employesType.select: {
             return {
                 ...state,
-                actualEmployed: payload
+                actualEmployed: adapter.createFromDB(payload)
             };
         }
         case employesType.selectAll: {
             return {
                 ...state,
-                employes: payload
+                employes: payload.map(employeeDB => adapter.createFromDB(employeeDB) )
             };
         }
         case employesType.typeVaccine:
         case employesType.employedVaccinated: {
             return {
                 ...state,
-                employes: payload.map(employedVaccined => employedVaccined.employes)
+                employes: payload.map(employedVaccined => adapter.createFromDB(employedVaccined.employes))
             };
         }
         default:

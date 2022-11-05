@@ -26,10 +26,10 @@ export default function EmployedCard(props) {
         <EmployedHeaderCard employed={employed}/>
         <CardContent>
             <Typography variant="body2" color="text.secondary">
-            Cédula: {employed.cedula}
+            Cédula: {employed.Cedula}
             </Typography>
             <Typography variant="body2" color="text.secondary">
-            Correo: {employed.email}
+            Correo: {employed.Email}
             </Typography>
         </CardContent>
         <CardActions>

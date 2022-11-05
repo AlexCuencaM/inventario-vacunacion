@@ -1,4 +1,5 @@
 import { createContext, useContext, useReducer,useState } from "react";
+import EmployeeAdapter from "../domain/Employees/EmployeeAdapter";
 import { employesReducer } from './reducers/employes';
 
 const StoreContext = createContext();
@@ -7,12 +8,14 @@ const employesInitialState = {
     employes:[],
     actualEmployed: null
 }
-export const employedFormInitialState = {
-    cedula: "",
-    names: "",
-    lastnames: "",
-    email: "",
+
+const employedFormInitialStateObj = {
+    Cedula: "",
+    Names: "",
+    Lastnames: "",
+    Email: "",
 }
+export const employedFormInitialState = new EmployeeAdapter().create(employedFormInitialStateObj);
 export const useStore = () => {
     return useContext(StoreContext);
 };

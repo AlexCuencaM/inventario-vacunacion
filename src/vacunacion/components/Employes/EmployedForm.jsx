@@ -20,10 +20,10 @@ export const EmployedForm = (props) =>{
                 <TextField
                     autoFocus
                     margin="dense"
-                    id="cedula"
-                    name="cedula"
+                    id="Cedula"
+                    name="Cedula"
                     label="Cédula"
-                    value={employed.cedula}
+                    value={employed.Cedula}
                     onChange={onInputChange}
                     type="text"
                     fullWidth
@@ -33,10 +33,10 @@ export const EmployedForm = (props) =>{
             <Grid item xs={12} sm={12} md={columns}>
                 <TextField
                     margin="dense"
-                    id="names"
-                    name="names"
+                    id="Names"
+                    name="Names"
                     label="Nombres"
-                    value={employed.names}
+                    value={employed.Names}
                     type="text"
                     onChange={onInputChange}
                     fullWidth
@@ -46,9 +46,9 @@ export const EmployedForm = (props) =>{
             <Grid item xs={12} sm={12} md={columns}>
                 <TextField
                 margin="dense"
-                id="lastnames"
-                name="lastnames"
-                value={employed.lastnames}
+                id="Lastnames"
+                name="Lastnames"
+                value={employed.Lastnames}
                 onChange={onInputChange}
                 label="Apellidos"
                 type="text"
@@ -59,10 +59,10 @@ export const EmployedForm = (props) =>{
             <Grid item xs={12} sm={12} md={columns}>
                 <TextField
                 margin="dense"
-                id="email"
-                name="email"
+                id="Email"
+                name="Email"
                 label="Correo electrónico"
-                value={employed.email}
+                value={employed.Email}
                 onChange={onInputChange}
                 type="email"
                 fullWidth

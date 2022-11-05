@@ -9,12 +9,12 @@ import { TypeVaccineFilter } from "../components/Filters/TypeVaccineFilter"
 import { EditFormDialog } from "../../ui/EditFormDialog"
 import { ConfirmDialog } from "../../ui/ConfirmDialog"
 import { RegistrerEmployedDialog } from "../../ui/RegistrerEmployedDialog"
-
 export const EmployesView = () => {
     const { employesDispatch } = useStoreDispatch();
     useEffect(() => {
         apiInstance.get("/employes")
         .then(({ data }) =>{
+            
             employesDispatch(getAllEmployes(data))
         })
     }, [])

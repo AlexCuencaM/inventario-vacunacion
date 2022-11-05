@@ -7,24 +7,27 @@ import { useStore } from '../store/store';
 import { GeneralDialog } from './GeneralDialog';
 import { EmployedForm } from '../vacunacion/components/Employes/EmployedForm';
 import { schema } from '../vacunacion/helpers/helpers';
-
+import EmployeeAdapter from '../domain/Employees/EmployeeAdapter';
+let adapter = new EmployeeAdapter();
 export function EditFormDialog() {
   const { ui, state, employedForm } = useStore();
   const { actualEmployed } = state;
   const { setOpenEditModal, employesDispatch } = useStoreDispatch();
+
   const handleOk = () =>{
-        schema.validate(employedForm)
-        .then(valid => apiInstance.patch(`/employes/${valid.id}`, employedForm))
-        .then(() => {
-            setOpenEditModal(false)
-            employesDispatch(getEmployed(employedForm))
-            employesDispatch(employedPatchedSaved(employedForm))
-            
-        })
-        .catch(err => {
-            alert(err.message)
-            employesDispatch(getEmployed(actualEmployed))
-        })
+    const employedFormDB = adapter.createToDB(employedForm) 
+    schema.validate(employedForm)
+    .then(valid => apiInstance.patch(`/employes/${valid.Id}`, employedFormDB))
+    .then(() => {
+        setOpenEditModal(false)
+        employesDispatch(getEmployed(employedFormDB))
+        employesDispatch(employedPatchedSaved(employedFormDB))
+        
+    })
+    .catch(err => {
+        alert(err.message)
+        employesDispatch(getEmployed(employedFormDB))
+    })
         
   }
   const handleCancel = () => {

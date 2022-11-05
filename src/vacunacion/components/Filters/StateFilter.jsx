@@ -11,6 +11,7 @@ const stateVaccineFilter = {
     vaccinated: "Vacunado",
     noVaccinated: "No_vacunado"
 }
+
 export const StateFilter = () => {
   const [vaccineState, setvaccineState] = React.useState(0);
   const { employesDispatch } = useStoreDispatch();
@@ -27,6 +28,7 @@ export const StateFilter = () => {
         value === stateVaccineFilter.noVaccinated){
         apiInstance.get(`/employesVaccines?_expand=employes&state=${value}`)
         .then(({ data }) =>{
+            console.log(data)
             employesDispatch(getEmployesByStateVaccine(data))
         })
     }

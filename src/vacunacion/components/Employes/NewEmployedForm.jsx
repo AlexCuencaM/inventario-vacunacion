@@ -6,7 +6,8 @@ import { employedPatchedSaved, getEmployed } from '../../../store/actions/employ
 import { apiInstance } from '../../../settings/apiInstance';
 import { Grid } from '@mui/material';
 import { schema } from '../../helpers/helpers';
-
+import EmployeeAdapter from '../../../domain/Employees/EmployeeAdapter';
+let adapter = new EmployeeAdapter();
 export function NewEmployedForm() {
   const { state, employedForm } = useStore();
   const { actualEmployed } = state;
@@ -17,17 +18,18 @@ export function NewEmployedForm() {
   }, [employedFormInitialState])
   
   const handleOk = () =>{
+    const employedFormDB = adapter.createToDB(employedForm)
         schema.validate(employedForm)
-        .then(valid => apiInstance.post(`/employes`, employedForm))
+        .then(valid => apiInstance.post(`/employes`, employedFormDB))
         .then((data) => {
-            employesDispatch(getEmployed(employedForm))
-            employesDispatch(employedPatchedSaved(employedForm))
+            employesDispatch(getEmployed(employedFormDB))
+            employesDispatch(employedPatchedSaved(employedFormDB))
             alert("Empleado registrado correctamente")
             setEmployedForm(employedFormInitialState)
         })
         .catch(err => {
             alert(err.message)
-            employesDispatch(getEmployed(actualEmployed))
+            employesDispatch(getEmployed(employedFormDB))
         })
   }
   return (
