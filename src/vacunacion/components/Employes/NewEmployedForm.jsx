@@ -19,8 +19,8 @@ export function NewEmployedForm() {
   const handleOk = () =>{
     const employedFormDB = adapter.createToDB(employedForm)
         schema.validate(employedForm)
-        .then(valid => apiInstance.post(`/employes`, employedFormDB))
-        .then((data) => {
+        .then(() => apiInstance.post(`/employes`, employedFormDB))
+        .then(() => {
             employesDispatch(getEmployed(employedFormDB))
             employesDispatch(employedPatchedSaved(employedFormDB))
             alert("Empleado registrado correctamente")
