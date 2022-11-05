@@ -9,8 +9,7 @@ import { schema } from '../../helpers/helpers';
 import EmployeeAdapter from '../../../domain/Employees/EmployeeAdapter';
 let adapter = new EmployeeAdapter();
 export function NewEmployedForm() {
-  const { state, employedForm } = useStore();
-  const { actualEmployed } = state;
+  const { employedForm } = useStore();
   const { employesDispatch, setEmployedForm } = useStoreDispatch();
   //It have to load before layout
   React.useLayoutEffect (() => {

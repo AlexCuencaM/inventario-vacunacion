@@ -6,7 +6,6 @@ const StoreContext = createContext();
 const StoreDispatchContext = createContext();
 const employesInitialState = {
     employes:[],
-    actualEmployed: null
 }
 
 const employedFormInitialStateObj = {

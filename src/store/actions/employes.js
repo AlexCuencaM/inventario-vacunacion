@@ -14,6 +14,10 @@ export const getEmployed = (actualEmployed) =>({
     type: employesType.select,
     payload: actualEmployed
 })
+export const getEmployedDefault = () =>({
+    type: employesType.selectDefault,
+})
+
 export const getAllEmployes = (employes) => ({
     type: employesType.selectAll,
     payload: employes

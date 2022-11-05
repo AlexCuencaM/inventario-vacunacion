@@ -1,5 +1,6 @@
 import EmployeeAdapter from "../../domain/Employees/EmployeeAdapter";
 import { employesType } from "../actions/types";
+import { employedFormInitialState } from "../store";
 export function employesReducer(state, { type, payload }) {
     let adapter = new EmployeeAdapter();
     switch (type) {
@@ -21,6 +22,12 @@ export function employesReducer(state, { type, payload }) {
             return {
                 ...state,
                 actualEmployed: adapter.createFromDB(payload)
+            };
+        }
+        case employesType.selectDefault: {
+            return {
+                ...state,
+                actualEmployed: employedFormInitialState
             };
         }
         case employesType.selectAll: {

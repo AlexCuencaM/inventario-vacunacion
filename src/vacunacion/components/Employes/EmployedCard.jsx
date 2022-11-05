@@ -11,16 +11,11 @@ import { EmployedHeaderCard } from './EmployedHeaderCard';
 export default function EmployedCard(props) {
   const { employed } = props
   const { setOpenModal, setOpenEditModal, employesDispatch, setEmployedForm} = useStoreDispatch();
-  const handleClick = () =>{
-    employesDispatch(getEmployed(employed))
-    setOpenModal(true)  
-  }
-  const handleEdit = () =>{
+  const handleClick = (setModal) =>{
     setEmployedForm(employed)
     employesDispatch(getEmployed(employed))
-    setOpenEditModal(true)
+    setModal(true)
   }
-  
   return (
     <Card sx={{ maxWidth: 345 }}>
         <EmployedHeaderCard employed={employed}/>
@@ -33,8 +28,8 @@ export default function EmployedCard(props) {
             </Typography>
         </CardContent>
         <CardActions>
-            <Button size="small" onClick={handleEdit}>Editar</Button>
-            <Button color="secondary" size="small" onClick={handleClick}>Eliminar</Button>
+            <Button size="small" onClick={() => handleClick(setOpenEditModal)}>Editar</Button>
+            <Button color="secondary" size="small" onClick={() => handleClick(setOpenModal)}>Eliminar</Button>
         </CardActions>
     </Card>
     

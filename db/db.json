@@ -66,20 +66,6 @@
       "lastnames": "Cuenca Moran",
       "email": "dante@mail.com",
       "id": 5
-    },
-    {
-      "cedula": "0928643894",
-      "names": "Mary",
-      "lastnames": "Currie M",
-      "email": "mary@mail.com",
-      "id": 6
-    },
-    {
-      "cedula": "0978451236",
-      "names": "Pepsi",
-      "lastnames": "Man",
-      "email": "pepsi@mail.com",
-      "id": 7
     }
   ],
   "typeVaccines": [

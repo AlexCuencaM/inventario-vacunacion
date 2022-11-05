@@ -7,6 +7,7 @@ export const employesType = {
     select: "[Employes] Seleccionando un empleado",
     employedVaccinated: "[Employes] Empleados vacunados o no",
     typeVaccine: "[Employes] Empleados vacunado por tipo de vacuna",
+    selectDefault: "[Employee] Estado por defecto"
 };
 export const usersType = {
     register: "[Users] Usuario creado"

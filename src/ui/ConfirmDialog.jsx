@@ -3,22 +3,22 @@ import Button from '@mui/material/Button';
 import { useStore } from '../store/store';
 import { useStoreDispatch } from '../store/store';
 import { apiInstance } from '../settings/apiInstance';
-import { employedDeleted, getEmployed } from '../store/actions/employes';
+import { employedDeleted, getEmployedDefault } from '../store/actions/employes';
 import { GeneralDialog } from './GeneralDialog';
 const Body = () => <p>Desea eliminar este empleado ?</p> 
 export function ConfirmDialog() {
-  const { ui, state } = useStore();
+  const { ui, employedForm } = useStore();
   const { setOpenModal, employesDispatch } = useStoreDispatch();
   const handleOk = () =>{
-        apiInstance.delete(`/employes/${state.actualEmployed.id}`)
-        .then(() => {
-            setOpenModal(false)
-            employesDispatch(getEmployed(null))
-            employesDispatch(employedDeleted(state.actualEmployed.id))
-        })
+    apiInstance.delete(`/employes/${employedForm.Id}`)
+    .then(() => {
+        setOpenModal(false)
+        employesDispatch(getEmployedDefault())
+        employesDispatch(employedDeleted(employedForm.Id))
+    })
   }
   const handleCancel = () => {
-    employesDispatch(getEmployed(null))
+    employesDispatch(getEmployedDefault())
     setOpenModal(false)
   };
   return (
