@@ -28,7 +28,6 @@ export const StateFilter = () => {
         value === stateVaccineFilter.noVaccinated){
         apiInstance.get(`/employesVaccines?_expand=employes&state=${value}`)
         .then(({ data }) =>{
-            console.log(data)
             employesDispatch(getEmployesByStateVaccine(data))
         })
     }

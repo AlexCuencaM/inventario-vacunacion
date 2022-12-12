@@ -14,7 +14,6 @@ export const EmployesView = () => {
     useEffect(() => {
         apiInstance.get("/employes")
         .then(({ data }) =>{
-            
             employesDispatch(getAllEmployes(data))
         })
     }, [])

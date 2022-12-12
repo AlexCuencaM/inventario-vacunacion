@@ -4,9 +4,9 @@ import { EmployedForm } from './EmployedForm';
 import { employedFormInitialState, useStore, useStoreDispatch } from '../../../store/store';
 import { employedPatchedSaved, getEmployed } from '../../../store/actions/employes';
 import { apiInstance } from '../../../settings/apiInstance';
+import EmployeeAdapter from '../../../domain/Employees/EmployeeAdapter';
 import { Grid } from '@mui/material';
 import { schema } from '../../helpers/helpers';
-import EmployeeAdapter from '../../../domain/Employees/EmployeeAdapter';
 let adapter = new EmployeeAdapter();
 export function NewEmployedForm() {
   const { employedForm } = useStore();
